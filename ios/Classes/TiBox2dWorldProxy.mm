@@ -256,7 +256,7 @@
 		}
 		
 		// we abuse the tag property as pointer to the physical body
-		physicalView.tag = (int)(size_t)body;
+		physicalView.tag = (NSInteger)body;
 		
 		bp = [[TiBox2dBodyProxy alloc] initWithBody:body viewproxy:viewproxy pageContext:[self executionContext]];
 		
