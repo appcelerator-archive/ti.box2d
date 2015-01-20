@@ -2,8 +2,8 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 0.9.1
-apiversion: 2
+version: 1.0.0
+architectures: armv7 i386 x86_64 arm64
 description: Box2D physics engine 
 author: Jeff Haynie 
 license: Apache Public License v2 
@@ -15,4 +15,4 @@ name: box2d
 moduleid: ti.box2d
 guid: A391B0DB-94F5-4820-9972-F7D7843545A6
 platform: iphone
-minsdk: 3.2.2
+minsdk: 3.4.1.GA
