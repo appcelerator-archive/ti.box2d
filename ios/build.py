@@ -3,7 +3,7 @@
 # Appcelerator Titanium Module Packager
 #
 #
-import os, sys, glob, string
+import os, subprocess, sys, glob, string, optparse, subprocess
 import zipfile
 
 cwd = os.path.abspath(os.path.dirname(sys._getframe(0).f_code.co_filename))
@@ -148,19 +148,32 @@ def glob_libfiles():
 	return files
 
 def build_module(manifest,config):
-	rc = os.system("xcodebuild -sdk iphoneos -configuration Release")
-	if rc != 0:
-		die("xcodebuild failed")
-	rc = os.system("xcodebuild -sdk iphonesimulator -configuration Release")
-	if rc != 0:
-		die("xcodebuild failed")
+	if(cmd_exists("xctool") == True):
+		rc = os.system("xctool -sdk iphoneos -configuration Release -scheme box2d")
+		if rc != 0:
+			die("xctool failed")
+		rc = os.system("xctool -sdk iphonesimulator -configuration Release -scheme box2d")
+		if rc != 0:
+			die("xctool failed")
+	else:
+		rc = os.system("xcodebuild -sdk iphoneos -configuration Release")
+		if rc != 0:
+			die("xcodebuild failed")
+		rc = os.system("xcodebuild -sdk iphonesimulator -configuration Release")
+		if rc != 0:
+			die("xcodebuild failed")
+
     # build the merged library using lipo
 	moduleid = manifest['moduleid']
 	libpaths = ''
 	for libfile in glob_libfiles():
 		libpaths+='%s ' % libfile
-		
+
 	os.system("lipo %s -create -output build/lib%s.a" %(libpaths,moduleid))
+
+def cmd_exists(cmd):
+    return subprocess.call("type " + cmd, shell=True, 
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE) == 0	
 	
 def package_module(manifest,mf,config):
 	name = manifest['name'].lower()
