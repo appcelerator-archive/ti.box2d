@@ -149,10 +149,10 @@ def glob_libfiles():
 
 def build_module(manifest,config):
 	if(cmd_exists("xctool") == True):
-		rc = os.system("xctool -sdk iphoneos -configuration Release -scheme box2d")
+		rc = os.system("xctool -sdk iphoneos -configuration Release -scheme box2d CONFIGURATION_BUILD_DIR=\"build/Release-iphonesimulator/\"")
 		if rc != 0:
 			die("xctool failed")
-		rc = os.system("xctool -sdk iphonesimulator -configuration Release -scheme box2d")
+		rc = os.system("xctool -sdk iphonesimulator -configuration Release -scheme box2d CONFIGURATION_BUILD_DIR=\"build/Release-iphonesimulator/\"")
 		if rc != 0:
 			die("xctool failed")
 	else:
