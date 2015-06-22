@@ -17,4 +17,4 @@ name: box2d
 moduleid: ti.box2d
 guid: A391B0DB-94F5-4820-9972-F7D7843545A6
 platform: iphone
-minsdk: 3.5.0.GA
+minsdk: 3.5.1.GA
