@@ -4,7 +4,7 @@
  * Please see the LICENSE included with this distribution for details.
  */
 
-#import <Box2D/Box2D.h>
+#import "Box2D.h"
 #import <vector>
 #import <algorithm>
 #import "TiProxy.h"
