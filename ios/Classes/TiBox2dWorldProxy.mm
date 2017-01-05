@@ -219,7 +219,7 @@
             if (shapeValues!=nil)
             {
                 NSArray *values = (NSArray*)shapeValues;
-                int count = [values count];
+                NSUInteger count = [values count];
                 b2Vec2 *vertices = new b2Vec2[count/2];
                 int x = 0;
                 for (size_t c = 0; c < count; c+=2)
@@ -227,7 +227,7 @@
                     vertices[x++] = b2Vec2([TiUtils floatValue:[values objectAtIndex:c]]/PTM_RATIO,[TiUtils floatValue:[values objectAtIndex:c+1]]/PTM_RATIO);
                 }
                 shape.Set(vertices, x);
-                delete vertices;
+                delete[] vertices;
             }
             else
             {

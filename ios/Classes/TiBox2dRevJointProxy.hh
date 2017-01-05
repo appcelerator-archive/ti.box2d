@@ -5,9 +5,9 @@
  */
 
 #import "TiProxy.h"
-#import <Box2D/Box2D.h>
+#import "Box2D.h"
 
-@interface TiBox2dRevJointProxy : TiProxy 
+@interface TiBox2dRevJointProxy : TiProxy
 {	
 @public
 	b2RevoluteJoint *joint;
